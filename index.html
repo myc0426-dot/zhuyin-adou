@@ -226,15 +226,20 @@ footer.nav {
   box-shadow: var(--shadow-s);
 }
 .adou.idle { animation: bob 2.2s ease-in-out infinite; }
-.adou.wave .arm-r { animation: wave 0.7s ease-in-out infinite; transform-origin: 78px 86px; }
+.adou.wave { animation: adou-wave 0.6s ease-in-out infinite; }
 .adou.jump { animation: jump 0.7s ease-in-out 3; }
 .adou.spin { animation: spin 1.1s ease-in-out 1; }
-.adou.walk { animation: walkbob 0.4s ease-in-out infinite; }
-.adou.walk-x { animation: pace 2.8s ease-in-out infinite; }
-.adou.frozen { animation: none !important; filter: saturate(0.7) hue-rotate(160deg) brightness(1.1); }
+.adou.walk,
+.adou.walk-x { animation: adou-walk 2.8s ease-in-out infinite; }
+.adou.walk.walk-x { animation: adou-walk 2.8s ease-in-out infinite; }
+.adou.frozen {
+  animation: none !important;
+  transform: scale(1.06);
+  filter: none;
+}
 .adou.frozen::after {
   content: "❄"; position: absolute; left: 50%; top: -8px; transform: translateX(-50%);
-  font-size: 36px; animation: none;
+  font-size: 28px; animation: none;
 }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes wave { 0%,100% { transform: rotate(10deg); } 50% { transform: rotate(-25deg); } }
@@ -247,6 +252,17 @@ footer.nav {
 @keyframes spin { 0% { transform: rotate(0) scale(1); } 60% { transform: rotate(360deg) scale(1.05); } 100% { transform: rotate(360deg) scale(1); } }
 @keyframes walkbob { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-10px) rotate(3deg); } }
 @keyframes pace { 0% { transform: translateX(-90px); } 50% { transform: translateX(90px); } 100% { transform: translateX(-90px); } }
+@keyframes adou-walk {
+  0%   { transform: translateX(-90px) translateY(0) rotate(-4deg); }
+  25%  { transform: translateX(0) translateY(-8px) rotate(3deg); }
+  50%  { transform: translateX(90px) translateY(0) rotate(-4deg); }
+  75%  { transform: translateX(0) translateY(-8px) rotate(3deg); }
+  100% { transform: translateX(-90px) translateY(0) rotate(-4deg); }
+}
+@keyframes adou-wave {
+  0%,100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
 @keyframes pop { 0% { transform: scale(0.6); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
 @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
@@ -483,11 +499,15 @@ footer.nav {
   animation: pop 0.35s ease;
 }
 .playground {
-  width: 100%; height: 230px; position: relative;
+  width: 100%; height: 250px; position: relative;
   background: linear-gradient(#d9f0ff 0 62%, #c8e89a 62% 100%);
   border-radius: 18px; overflow: hidden; margin: 6px 0 10px;
 }
-.playground .adou { position: absolute; bottom: 8px; left: 50%; margin-left: -80px; }
+.playground .adou {
+  position: absolute; bottom: 8px; left: 50%;
+  margin-left: -55px;
+}
+.playground .adou-pic { width: 110px; height: auto; }
 
 .timer-ring { width: 160px; height: 160px; position: relative; margin: 8px auto; }
 .timer-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
@@ -686,7 +706,11 @@ footer.nav {
             <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
             <span class="makima-card-glyph"></span>
           </div>
-          <div class="adou-wrap"><div class="adou idle" id="adouListen"></div></div>
+          <div class="adou-wrap">
+            <div class="adou adou-pic idle" id="adouListen">
+              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+            </div>
+          </div>
         </div>
         <div class="status" id="listenStatus">按「開始這一題」，先聽完再動。</div>
         <div class="row">
@@ -703,7 +727,9 @@ footer.nav {
       <div class="stage">
         <div class="round-pills" id="woodPills"></div>
         <div class="playground" id="woodYard">
-          <div class="adou idle" id="adouWood"></div>
+          <div class="adou adou-pic idle" id="adouWood">
+            <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+          </div>
         </div>
         <div class="cd-num hidden" id="woodCd"></div>
         <div class="status" id="woodStatus">按「開始遊戲」，看著阿豆，準備站住！</div>
@@ -1009,36 +1035,6 @@ window.ZHUYIN_AUDIO_MAP = {
   ];
 
   const NEXT_KEYS = ["fo", "de", "te"];
-
-  /* ---------- 阿豆 SVG ---------- */
-  const ADOU_SVG = `
-  <svg viewBox="0 0 120 160" aria-hidden="true">
-    <ellipse cx="60" cy="148" rx="28" ry="6" fill="rgba(36,52,60,.16)"/>
-    <g class="leg-l"><ellipse cx="46" cy="132" rx="8" ry="12" fill="#5AA34A" stroke="#3E7A32" stroke-width="2"/></g>
-    <g class="leg-r"><ellipse cx="74" cy="132" rx="8" ry="12" fill="#5AA34A" stroke="#3E7A32" stroke-width="2"/></g>
-    <g class="arm-l" style="transform-origin:42px 86px">
-      <ellipse cx="30" cy="92" rx="10" ry="7" fill="#7BC96A" stroke="#3E7A32" stroke-width="2" transform="rotate(-20 30 92)"/>
-    </g>
-    <g class="arm-r" style="transform-origin:78px 86px">
-      <ellipse cx="90" cy="92" rx="10" ry="7" fill="#7BC96A" stroke="#3E7A32" stroke-width="2" transform="rotate(20 90 92)"/>
-    </g>
-    <ellipse cx="60" cy="78" rx="36" ry="48" fill="#7BC96A" stroke="#3E7A32" stroke-width="2.5"/>
-    <ellipse cx="48" cy="64" rx="12" ry="16" fill="#C5ECA8" opacity=".85"/>
-    <path d="M58 16 C60 6 70 6 72 16 C66 14 62 14 58 16Z" fill="#5EBB7A" stroke="#3E7A32" stroke-width="1.6"/>
-    <path d="M70 14 C84 4 86 22 74 20" fill="#8FCB6C" stroke="#3E7A32" stroke-width="1.6"/>
-    <circle cx="48" cy="76" r="4.2" fill="#24343C"/>
-    <circle cx="72" cy="76" r="4.2" fill="#24343C"/>
-    <circle cx="49.3" cy="74.6" r="1.3" fill="#fff"/>
-    <circle cx="73.3" cy="74.6" r="1.3" fill="#fff"/>
-    <ellipse cx="42" cy="88" rx="6" ry="3.5" fill="#F5A8A0" opacity=".85"/>
-    <ellipse cx="78" cy="88" rx="6" ry="3.5" fill="#F5A8A0" opacity=".85"/>
-    <path d="M50 96 Q60 106 70 96" fill="none" stroke="#24343C" stroke-width="2.4" stroke-linecap="round"/>
-  </svg>`;
-
-  function mountAdou(el) {
-    if (!el) return;
-    el.innerHTML = ADOU_SVG;
-  }
 
   function glyphSvg(key, opts) {
     opts = opts || {};
@@ -2045,10 +2041,6 @@ window.ZHUYIN_AUDIO_MAP = {
 
   /* ---------- init ---------- */
   function init() {
-    // Interactive pose games still use the bean drawing; greeting / break / end use the photo.
-    ["adouListen", "adouWood"].forEach(function (id) {
-      mountAdou($("#" + id));
-    });
     $("#welcomeGlyphs").innerHTML = ["bo", "po", "mo"].map(function (k) {
       return "<div class=\"mini\">" + glyphSvg(k, { fill: SYMBOLS[k].color }) + "</div>";
     }).join("");
