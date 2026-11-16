@@ -9,9 +9,9 @@
 3. 每個步驟都可以按 **🔊 再聽一次**。聲音是預先錄好的台灣中文（HsiaoChen）。如果單獨的注音還有一點點不準，請爸爸跟著念給阿豆聽，沒關係。
 4. 上完課後，下載「第 1 課作業單」，列印出來用鉛筆慢慢描寫。網頁負責聽、認、玩；寫字還是用紙本比較好。
 
-課程網頁（Vercel，建議使用）：待部署後更新
+課程網頁（建議使用）：https://zhuyin-adou.vercel.app/
 
-GitHub Pages：https://myc0426-dot.github.io/zhuyin-adou/
+GitHub Pages 備用：https://myc0426-dot.github.io/zhuyin-adou/
 
 作業單：同一網址下的 [lesson01_作業.pdf](lesson01_作業.pdf)
 

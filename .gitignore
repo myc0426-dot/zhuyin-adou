@@ -5,3 +5,5 @@ paths.js
 font-face.css
 screenshots/
 voice-samples/
+.vercel
+.env*
