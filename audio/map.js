@@ -70,5 +70,14 @@ window.ZHUYIN_AUDIO_MAP = {
   "來看 ㄇ 的筆順。第 1 筆：先寫左邊的一豎，由上往下。": "audio/stroke_m.mp3",
   "寫好了，阿豆真棒！ㄅ是 1 畫。": "audio/trace_b.mp3",
   "寫好了，阿豆真棒！ㄆ是 2 畫。": "audio/trace_p.mp3",
-  "寫好了，阿豆真棒！ㄇ是 2 畫。": "audio/trace_m.mp3"
+  "寫好了，阿豆真棒！ㄇ是 2 畫。": "audio/trace_m.mp3",
+  "嗨，阿豆！準備好了嗎？今天是第一課，我們要認識ㄅ、ㄆ、ㄇ。瑪奇瑪老師和波奇塔也來陪你。先來玩暖身遊戲，讓耳朵打開。": "audio/welcome_friends.mp3",
+  "暖身遊戲：聽了再動。瑪奇瑪老師會出示注音，阿豆要先把話聽完，聽到開始，再做動作。": "audio/listen_intro_makima.mp3",
+  "阿豆，聽到ㄅ就拍手。開始！": "audio/listen_b_clap.mp3",
+  "阿豆，聽到ㄆ就摸摸頭。開始！": "audio/listen_p_head.mp3",
+  "阿豆，聽到ㄇ就舉舉手。開始！": "audio/listen_m_hands.mp3",
+  "嚕嚕嚕！": "audio/lulu.mp3",
+  "阿豆、波奇塔，站起來動一動！跟著跳三下，轉一圈，然後坐好。": "audio/break_intro_friends.mp3",
+  "現在瑪奇瑪老師要出題了。仔細聽，再點出正確的注音。": "audio/quiz_intro_makima.mp3",
+  "阿豆好棒！波奇塔也很高興。今天我們認識了ㄅ、ㄆ、ㄇ。記得跟爸爸一起寫作業單喔。": "audio/end_friends.mp3"
 };

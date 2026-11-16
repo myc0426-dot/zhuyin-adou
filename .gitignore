@@ -7,3 +7,4 @@ screenshots/
 voice-samples/
 .vercel
 .env*
+__pycache__/

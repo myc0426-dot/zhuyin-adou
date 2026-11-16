@@ -253,6 +253,142 @@ footer.nav {
 @keyframes burst { 0% { transform: scale(0.4); opacity: 0; } 40% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
 @keyframes sparkle { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-40px) scale(0.4); opacity: 0; } }
 
+/* ===== 瑪奇瑪 / 波奇塔 ===== */
+.makima-holder {
+  position: relative;
+  width: 240px;
+  flex: 0 0 auto;
+  container-type: inline-size;
+}
+.makima-holder img {
+  width: 100%; height: auto; display: block;
+  border-radius: 24px;
+  box-shadow: var(--shadow-s);
+}
+.makima-holder.makima-sm { width: 168px; }
+.makima-card-glyph {
+  position: absolute;
+  left: 23%;
+  top: 42.5%;
+  width: 19%;
+  height: 13%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "LessonTC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
+  font-weight: 700;
+  font-size: 12cqw;
+  line-height: 1;
+  color: var(--ink);
+  pointer-events: none;
+  text-align: center;
+  letter-spacing: 0;
+}
+.mascot-pic {
+  width: 168px;
+  position: relative;
+  flex: 0 0 auto;
+  transform-origin: 50% 80%;
+}
+.mascot-pic img {
+  width: 100%; height: auto; display: block;
+  border-radius: 24px;
+  box-shadow: var(--shadow-s);
+}
+.mascot-pic.idle { animation: bob 2.2s ease-in-out infinite; }
+.mascot-pic.jump { animation: jump 0.7s ease-in-out 3; }
+.mascot-pic.spin { animation: spin 1.1s ease-in-out 1; }
+.cast-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 4px 0 8px;
+}
+.welcome-cast {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 10px;
+  margin: 4px 0 8px;
+}
+.welcome-cast .adou-wrap { margin: 0; }
+.welcome-cast .adou-pic { width: 150px; }
+.welcome-cast .makima-holder.makima-sm { width: 150px; }
+.welcome-cast #pochitaWelcome { width: 132px; }
+.cast-break .adou-pic { width: 140px; }
+.cast-break #pochitaBreak { width: 150px; }
+.cast-end .adou-pic { width: 120px; }
+.cast-end #pochitaEnd { width: 132px; }
+.cast-end { margin-top: 8px; }
+
+.pochita-pop {
+  position: fixed;
+  right: 18px;
+  bottom: 96px;
+  width: 124px;
+  z-index: 35;
+  pointer-events: none;
+  transform-origin: 50% 80%;
+}
+.pochita-pop img {
+  width: 100%; height: auto; display: block;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+.pochita-pop.show {
+  animation: pochita-in 0.55s ease, pochita-wiggle 0.4s ease 0.55s 4;
+}
+.pochita-bubble {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #fff;
+  color: var(--ink);
+  border: 2.5px solid var(--ink);
+  border-radius: 16px 16px 16px 6px;
+  padding: 5px 10px;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: var(--shadow-s);
+}
+@keyframes pochita-in {
+  0% { transform: translateY(36px) scale(0.5); opacity: 0; }
+  60% { transform: translateY(-14px) scale(1.1); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes pochita-wiggle {
+  0%,100% { transform: rotate(0deg); }
+  25% { transform: rotate(-14deg); }
+  75% { transform: rotate(14deg); }
+}
+
+.quiz-prompt-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 4px 0 8px;
+}
+.quiz-prompt-row #quizPrompt {
+  text-align: left;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+}
+#sc-learn-all .makima-holder { margin: 4px auto 10px; }
+
+@media (max-width: 640px) {
+  .makima-holder { width: 180px; }
+  .makima-holder.makima-sm { width: 132px; }
+  .welcome-cast .adou-pic, .welcome-cast .makima-holder.makima-sm { width: 110px; }
+  .welcome-cast #pochitaWelcome { width: 96px; }
+  .pochita-pop { width: 120px; right: 12px; bottom: 100px; }
+}
+
 /* ===== Cards / glyphs ===== */
 .glyph {
   width: 1em; height: 1em; display: inline-block; vertical-align: -0.14em;
@@ -266,8 +402,18 @@ footer.nav {
   width: 86%; height: 86%;
 }
 .hero-glyph .glyph { width: 78%; height: 78%; }
+.learn-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 0 0 12px;
+}
+.learn-hero .makima-holder { width: 220px; }
+.learn-hero .hero-glyph { margin: 0; }
 .hero-glyph {
-  width: min(260px, 46vw); height: min(260px, 46vw);
+  width: min(220px, 42vw); height: min(220px, 42vw);
   background: var(--paper); border-radius: 32px;
   box-shadow: var(--shadow); border: 4px solid var(--line);
   display: grid; place-items: center; margin: 0 auto 12px;
@@ -503,15 +649,24 @@ footer.nav {
     <!-- 1. 歡迎 -->
     <section class="screen active" id="sc-welcome" data-title="歡迎">
       <div class="welcome-hero">
-        <div class="adou-wrap">
-          <div class="adou adou-pic idle" id="adouWelcome">
-            <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+        <div class="welcome-cast">
+          <div class="makima-holder makima-sm" id="makimaWelcome">
+            <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+            <span class="makima-card-glyph" style="color:#E85D4C">ㄅ</span>
+          </div>
+          <div class="adou-wrap">
+            <div class="adou adou-pic idle" id="adouWelcome">
+              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+            </div>
+          </div>
+          <div class="mascot-pic idle" id="pochitaWelcome">
+            <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
           </div>
         </div>
         <h2>嗨，阿豆！準備好了嗎？</h2>
-        <p class="lead">今天是第 1 課，我們要認識三個好朋友：</p>
+        <p class="lead">今天是第 1 課，我們要認識三個注音好朋友：</p>
         <div class="symbols-inline" id="welcomeGlyphs"></div>
-        <p class="lead">先來玩暖身遊戲，讓耳朵打開，再開始上課。<br>大約 20 分鐘，爸爸會陪你一起按。</p>
+        <p class="lead">瑪奇瑪老師會出示注音，答對了波奇塔會來慶祝。<br>先來玩暖身遊戲，讓耳朵打開。大約 20 分鐘，爸爸會陪你一起按。</p>
         <label class="check"><input type="checkbox" id="optTimer"> 幫爸爸顯示 20 分鐘計時</label>
         <div style="margin-top:16px">
           <button type="button" class="primary big" id="btnStart">準備好了，開始！</button>
@@ -523,10 +678,16 @@ footer.nav {
     <!-- 聽了再動 -->
     <section class="screen" id="sc-listen" data-title="聽了再動">
       <h2>暖身遊戲 1：聽了再動</h2>
-      <p class="lead">先把話聽完，聽到「開始」再做動作，然後按按鈕。</p>
+      <p class="lead">瑪奇瑪老師會出示注音。先把話聽完，聽到「開始」再做動作。</p>
       <div class="stage">
         <div class="round-pills" id="listenPills"></div>
-        <div class="adou-wrap"><div class="adou idle" id="adouListen"></div></div>
+        <div class="cast-row">
+          <div class="makima-holder" id="makimaListen">
+            <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+            <span class="makima-card-glyph"></span>
+          </div>
+          <div class="adou-wrap"><div class="adou idle" id="adouListen"></div></div>
+        </div>
         <div class="status" id="listenStatus">按「開始這一題」，先聽完再動。</div>
         <div class="row">
           <button type="button" class="ghost" id="btnListenStart">開始這一題</button>
@@ -559,18 +720,27 @@ footer.nav {
     <section class="screen" id="sc-learn-mo" data-title="認識ㄇ"></section>
     <section class="screen" id="sc-learn-all" data-title="一起認一認">
       <h2>一起點一點、念一念</h2>
-      <p class="lead">阿豆，三個符號都在這裡。點點看，再聽一次。</p>
+      <p class="lead">阿豆，三個符號都在這裡。點點看，瑪奇瑪老師會把符號舉起來。</p>
+      <div class="makima-holder" id="makimaAll">
+        <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+        <span class="makima-card-glyph"></span>
+      </div>
       <div class="sym-grid" id="allSyms"></div>
     </section>
 
     <!-- 動一動 -->
     <section class="screen" id="sc-break" data-title="動一動">
       <h2>動一動，休息一下</h2>
-      <p class="lead">跟著阿豆：跳三下，轉一圈，然後坐好。大約一分鐘。</p>
+      <p class="lead">跟著阿豆和波奇塔：跳三下，轉一圈，然後坐好。大約一分鐘。</p>
       <div class="stage">
-        <div class="adou-wrap">
-          <div class="adou adou-pic idle" id="adouBreak">
-            <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+        <div class="cast-row cast-break">
+          <div class="adou-wrap">
+            <div class="adou adou-pic idle" id="adouBreak">
+              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+            </div>
+          </div>
+          <div class="mascot-pic idle" id="pochitaBreak">
+            <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
           </div>
         </div>
         <div class="timer-ring" id="breakRing">
@@ -593,12 +763,15 @@ footer.nav {
     <section class="screen" id="sc-quiz" data-title="聽音辨識">
       <h2>聽一聽，選一選</h2>
       <p class="lead">仔細聽，再點出正確的注音。共 6 題。點錯了沒關係，再聽一次。</p>
-      <div class="status" id="quizPrompt" style="text-align:center;font-size:22px;font-weight:700;margin:4px 0 8px">第 1 題／6 題</div>
+      <div class="quiz-prompt-row">
+        <div class="makima-holder makima-sm" id="makimaQuiz">
+          <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+          <span class="makima-card-glyph"></span>
+        </div>
+        <div class="status" id="quizPrompt">第 1 題／6 題</div>
+      </div>
       <div class="choices" id="quizChoices"></div>
       <div class="quiz-fb-row">
-        <div class="adou-praise hidden" id="adouPraise" aria-hidden="true">
-          <img src="images/adou.webp" alt="阿豆">
-        </div>
         <div class="feedback" id="quizFb"></div>
       </div>
     </section>
@@ -629,9 +802,15 @@ footer.nav {
     <!-- 結尾 -->
     <section class="screen" id="sc-end" data-title="下課">
       <div class="celebrate">
-        <div class="adou-wrap">
-          <div class="adou adou-pic idle jump" id="adouEnd">
-            <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+        <div class="cast-row cast-end">
+          <div class="adou-wrap">
+            <div class="adou adou-pic idle jump" id="adouEnd">
+              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+            </div>
+          </div>
+          <div class="mascot-pic idle jump" id="pochitaEnd">
+            <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
+            <div class="pochita-bubble">嚕嚕嚕！</div>
           </div>
         </div>
         <h2>阿豆好棒！</h2>
@@ -653,6 +832,10 @@ footer.nav {
     <button type="button" class="speak-btn" id="btnSpeak">🔊 再聽一次</button>
     <button type="button" class="nav-btn" id="btnNext">下一步 →</button>
   </footer>
+</div>
+<div class="pochita-pop hidden" id="pochitaPop" aria-hidden="true">
+  <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
+  <div class="pochita-bubble">嚕嚕嚕！</div>
 </div>
 <canvas id="confetti"></canvas>
 
@@ -730,24 +913,33 @@ window.ZHUYIN_AUDIO_MAP = {
   "來看 ㄇ 的筆順。第 1 筆：先寫左邊的一豎，由上往下。": "audio/stroke_m.mp3",
   "寫好了，阿豆真棒！ㄅ是 1 畫。": "audio/trace_b.mp3",
   "寫好了，阿豆真棒！ㄆ是 2 畫。": "audio/trace_p.mp3",
-  "寫好了，阿豆真棒！ㄇ是 2 畫。": "audio/trace_m.mp3"
+  "寫好了，阿豆真棒！ㄇ是 2 畫。": "audio/trace_m.mp3",
+  "嗨，阿豆！準備好了嗎？今天是第一課，我們要認識ㄅ、ㄆ、ㄇ。瑪奇瑪老師和波奇塔也來陪你。先來玩暖身遊戲，讓耳朵打開。": "audio/welcome_friends.mp3",
+  "暖身遊戲：聽了再動。瑪奇瑪老師會出示注音，阿豆要先把話聽完，聽到開始，再做動作。": "audio/listen_intro_makima.mp3",
+  "阿豆，聽到ㄅ就拍手。開始！": "audio/listen_b_clap.mp3",
+  "阿豆，聽到ㄆ就摸摸頭。開始！": "audio/listen_p_head.mp3",
+  "阿豆，聽到ㄇ就舉舉手。開始！": "audio/listen_m_hands.mp3",
+  "嚕嚕嚕！": "audio/lulu.mp3",
+  "阿豆、波奇塔，站起來動一動！跟著跳三下，轉一圈，然後坐好。": "audio/break_intro_friends.mp3",
+  "現在瑪奇瑪老師要出題了。仔細聽，再點出正確的注音。": "audio/quiz_intro_makima.mp3",
+  "阿豆好棒！波奇塔也很高興。今天我們認識了ㄅ、ㄆ、ㄇ。記得跟爸爸一起寫作業單喔。": "audio/end_friends.mp3"
 };
 /* 阿豆的注音課 第 1 課 */
 (function () {
   "use strict";
 
   const PAGES = [
-    { id: "welcome", title: "歡迎", speak: "嗨，阿豆！準備好了嗎？今天是第一課，我們要認識ㄅ、ㄆ、ㄇ。先來玩暖身遊戲，讓耳朵打開。" },
-    { id: "listen", title: "聽了再動", speak: "暖身遊戲：聽了再動。阿豆要先把話聽完，聽到開始，再做動作。" },
+    { id: "welcome", title: "歡迎", speak: "嗨，阿豆！準備好了嗎？今天是第一課，我們要認識ㄅ、ㄆ、ㄇ。瑪奇瑪老師和波奇塔也來陪你。先來玩暖身遊戲，讓耳朵打開。" },
+    { id: "listen", title: "聽了再動", speak: "暖身遊戲：聽了再動。瑪奇瑪老師會出示注音，阿豆要先把話聽完，聽到開始，再做動作。" },
     { id: "wood", title: "木頭人", speak: "接下來玩一二三木頭人。阿豆會走動，聽到木頭人就要站住。" },
     { id: "learn-bo", title: "認識ㄅ", speak: "先來認識ㄅ。這是ㄅ，包子的ㄅ，爸爸的ㄅ。" },
     { id: "learn-po", title: "認識ㄆ", speak: "再來認識ㄆ。這是ㄆ，拍球的ㄆ，蘋果的ㄆ。" },
     { id: "learn-mo", title: "認識ㄇ", speak: "最後是ㄇ。這是ㄇ，門的ㄇ，媽媽的ㄇ。" },
     { id: "learn-all", title: "一起認一認", speak: "阿豆，三個符號都在這裡。點一點，再聽一次。" },
-    { id: "break", title: "動一動", speak: "阿豆站起來動一動！跟著跳三下，轉一圈，然後坐好。" },
-    { id: "quiz", title: "聽音辨識", speak: "現在來玩聽一聽、選一選。仔細聽，再點出正確的注音。" },
+    { id: "break", title: "動一動", speak: "阿豆、波奇塔，站起來動一動！跟著跳三下，轉一圈，然後坐好。" },
+    { id: "quiz", title: "聽音辨識", speak: "現在瑪奇瑪老師要出題了。仔細聽，再點出正確的注音。" },
     { id: "stroke", title: "筆順描寫", speak: "來看筆順。先看怎麼寫，再用手指或滑鼠，沿著淡淡的字描一描。" },
-    { id: "end", title: "下課", speak: "阿豆好棒！今天我們認識了ㄅ、ㄆ、ㄇ。記得跟爸爸一起寫作業單喔。" }
+    { id: "end", title: "下課", speak: "阿豆好棒！波奇塔也很高興。今天我們認識了ㄅ、ㄆ、ㄇ。記得跟爸爸一起寫作業單喔。" }
   ];
 
   const SYMBOLS = {
@@ -799,9 +991,9 @@ window.ZHUYIN_AUDIO_MAP = {
   };
 
   const LISTEN_ROUNDS = [
-    { act: "請拍拍手", say: "阿豆，先聽完再動。請拍拍手。開始！", pose: "wave" },
-    { act: "請摸摸頭", say: "阿豆，先聽完再動。請摸摸頭。開始！", pose: "idle" },
-    { act: "請舉舉手", say: "阿豆，先聽完再動。請舉舉手。開始！", pose: "wave" }
+    { act: "拍拍手", say: "阿豆，聽到ㄅ就拍手。開始！", pose: "wave", sym: "bo" },
+    { act: "摸摸頭", say: "阿豆，聽到ㄆ就摸摸頭。開始！", pose: "idle", sym: "po" },
+    { act: "舉舉手", say: "阿豆，聽到ㄇ就舉舉手。開始！", pose: "wave", sym: "mo" }
   ];
 
   const QUIZ_BANK = [
@@ -1061,6 +1253,7 @@ window.ZHUYIN_AUDIO_MAP = {
 
   function leavePage(id) {
     stopSpeech();
+    showPochitaPop(false);
     if (id === "wood") stopWood();
     if (id === "break") stopBreak(false);
     if (id === "stroke") stopStrokeAnim();
@@ -1122,10 +1315,12 @@ window.ZHUYIN_AUDIO_MAP = {
       "<h2>認識　" + S.ch + "</h2>" +
       "<p class=\"motto\">" + S.motto + "</p>" +
       "<p class=\"phrase\">" + S.phrase + "</p>" +
+      "<div class=\"learn-hero\">" +
+      makimaHTML("makima-learn-" + key, S.ch, S.color) +
       "<div class=\"hero-glyph\" data-say=\"" + escapeAttr(S.say) + "\" role=\"button\" tabindex=\"0\" aria-label=\"聽 " + S.ch + "\">" +
         "<span class=\"badge-n\">" + S.n + " 畫</span>" +
         glyphSvg(key, { fill: S.color }) +
-      "</div>" +
+      "</div></div>" +
       "<div class=\"ex-grid\">" +
         S.examples.map(function (ex) {
           return "<button type=\"button\" class=\"ex-card\" data-say=\"" + escapeAttr(ex.say) + "\">" +
@@ -1152,7 +1347,11 @@ window.ZHUYIN_AUDIO_MAP = {
         "<div class=\"name\">" + S.ch + (withPhrase ? "　" + S.phrase : "") + "</div></button>";
     }).join("");
     $$(".sym-card", container).forEach(function (b) {
-      b.addEventListener("click", function () { speak(SYMBOLS[b.getAttribute("data-k")].say); });
+      b.addEventListener("click", function () {
+        const S2 = SYMBOLS[b.getAttribute("data-k")];
+        speak(S2.say);
+        setMakimaGlyph("makimaAll", S2.ch, S2.color);
+      });
     });
   }
 
@@ -1167,6 +1366,14 @@ window.ZHUYIN_AUDIO_MAP = {
     listenCanAct = false;
     listenStarted = false;
     setAdouPose($("#adouListen"), "idle");
+    const upcoming = LISTEN_ROUNDS[Math.min(listenRound, LISTEN_ROUNDS.length - 1)];
+    if (upcoming && upcoming.sym) {
+      const S = SYMBOLS[upcoming.sym];
+      setMakimaGlyph("makimaListen", S.ch, S.color);
+    } else {
+      setMakimaGlyph("makimaListen", "");
+    }
+    showPochitaPop(false);
   }
 
   function renderPills(el, n, cur) {
@@ -1180,16 +1387,53 @@ window.ZHUYIN_AUDIO_MAP = {
 
   function setAdouPose(el, pose) {
     if (!el) return;
+    if (el.classList.contains("mascot-pic")) {
+      el.className = "mascot-pic" + (pose ? " " + pose : "");
+      return;
+    }
     const pic = el.classList.contains("adou-pic") ? " adou-pic" : "";
     el.className = "adou" + pic + (pose ? " " + pose : "");
   }
 
-  function showAdouPraise(on) {
-    const el = $("#adouPraise");
+  function makimaHTML(id, ch, color) {
+    const style = color ? " style=\"color:" + color + "\"" : "";
+    return "<div class=\"makima-holder\" id=\"" + id + "\">" +
+      "<img src=\"images/makima.webp\" alt=\"瑪奇瑪老師\" width=\"512\" height=\"512\">" +
+      "<span class=\"makima-card-glyph\"" + style + ">" + (ch || "") + "</span></div>";
+  }
+
+  function setMakimaGlyph(idOrEl, ch, color) {
+    const el = typeof idOrEl === "string" ? $("#" + idOrEl) : idOrEl;
     if (!el) return;
-    el.classList.toggle("hidden", !on);
-    el.classList.toggle("pop", !!on);
-    el.setAttribute("aria-hidden", on ? "false" : "true");
+    const g = el.querySelector(".makima-card-glyph");
+    if (!g) return;
+    g.textContent = ch || "";
+    g.style.color = color || "#24343C";
+  }
+
+  function pochitaBuzz() {
+    if (!audioCtx) unlockAudio();
+    if (!audioCtx) return;
+    [392, 523.25, 659.25].forEach(function (f, i) {
+      setTimeout(function () { tone(f, 0.11, "square", 0.07); }, i * 85);
+    });
+  }
+
+  function showPochitaPop(on) {
+    const el = $("#pochitaPop");
+    if (!el) return;
+    if (!on) {
+      el.classList.add("hidden");
+      el.classList.remove("show");
+      el.setAttribute("aria-hidden", "true");
+      return;
+    }
+    el.classList.remove("hidden");
+    el.classList.remove("show");
+    void el.offsetWidth;
+    el.classList.add("show");
+    el.setAttribute("aria-hidden", "false");
+    pochitaBuzz();
   }
 
   function startListenRound() {
@@ -1201,6 +1445,8 @@ window.ZHUYIN_AUDIO_MAP = {
     $("#btnListenDone").disabled = false;
     $("#listenStatus").textContent = "先聽完……不要急著按喔。";
     setAdouPose($("#adouListen"), "idle");
+    if (r.sym && SYMBOLS[r.sym]) setMakimaGlyph("makimaListen", SYMBOLS[r.sym].ch, SYMBOLS[r.sym].color);
+    showPochitaPop(false);
     speak(r.say, {
       onend: function () {
         listenCanAct = true;
@@ -1228,6 +1474,7 @@ window.ZHUYIN_AUDIO_MAP = {
       ding(true);
     }
     sparkleAt($("#btnListenDone"));
+    showPochitaPop(true);
     listenRound += 1;
     listenStarted = false;
     listenCanAct = false;
@@ -1314,6 +1561,7 @@ window.ZHUYIN_AUDIO_MAP = {
       ding(true);
     }
     sparkleAt($("#btnWoodFreeze"));
+    showPochitaPop(true);
     woodRound += 1;
     woodCanFreeze = false;
     renderPills($("#woodPills"), 2, woodRound);
@@ -1335,8 +1583,8 @@ window.ZHUYIN_AUDIO_MAP = {
     breakLeft = 60;
     breakRunning = false;
     renderBreak();
-    $("#breakStatus").textContent = "按「開始動一動」，跟阿豆一起跳！";
-    setAdouPose($("#adouBreak"), "idle");
+    $("#breakStatus").textContent = "按「開始動一動」，跟阿豆和波奇塔一起跳！";
+    poseBreak("idle");
     $("#btnBreakStart").disabled = false;
   }
 
@@ -1364,32 +1612,35 @@ window.ZHUYIN_AUDIO_MAP = {
     }, 1000);
   }
 
+  function poseBreak(pose) {
+    setAdouPose($("#adouBreak"), pose);
+    setAdouPose($("#pochitaBreak"), pose);
+  }
+
   function playBreakAnim() {
-    const el = $("#adouBreak");
-    setAdouPose(el, "jump");
+    poseBreak("jump");
     speak("跳三下！");
     setTimeout(function () {
       if (!breakRunning) return;
       $("#breakStatus").textContent = "轉一圈……";
-      setAdouPose(el, "spin");
+      poseBreak("spin");
       speak("轉一圈！");
     }, 2300);
     setTimeout(function () {
       if (!breakRunning) return;
       $("#breakStatus").textContent = "很好，慢慢坐好。還可以再跟著做一次。";
-      setAdouPose(el, "idle");
+      poseBreak("idle");
       speak("很好，慢慢坐好。");
     }, 3800);
-    // loop jump/spin gently while timer runs
     setTimeout(function loop() {
       if (!breakRunning) return;
-      setAdouPose(el, "jump");
+      poseBreak("jump");
       setTimeout(function () {
         if (!breakRunning) return;
-        setAdouPose(el, "spin");
+        poseBreak("spin");
         setTimeout(function () {
           if (!breakRunning) return;
-          setAdouPose(el, "idle");
+          poseBreak("idle");
           setTimeout(loop, 1600);
         }, 1200);
       }, 2300);
@@ -1403,14 +1654,14 @@ window.ZHUYIN_AUDIO_MAP = {
       breakLeft = 0;
       renderBreak();
       $("#breakStatus").textContent = "時間到了，阿豆坐好，準備下一關！";
-      setAdouPose($("#adouBreak"), "idle");
+      poseBreak("idle");
       speak("時間到了，阿豆坐好，準備下一關！");
     }
   }
 
   function finishBreak() {
     stopBreak(false);
-    setAdouPose($("#adouBreak"), "idle");
+    poseBreak("idle");
     $("#breakStatus").textContent = "坐好了，真乖。可以按下一步。";
     speak("坐好了，真乖。");
     $("#btnBreakStart").disabled = false;
@@ -1444,7 +1695,8 @@ window.ZHUYIN_AUDIO_MAP = {
     $("#quizPrompt").textContent = "第 " + (quizI + 1) + " 題／6 題";
     $("#quizFb").textContent = "";
     $("#quizFb").className = "feedback";
-    showAdouPraise(false);
+    setMakimaGlyph("makimaQuiz", "");
+    showPochitaPop(false);
     const keys = shuffle(["bo", "po", "mo"]);
     $("#quizChoices").innerHTML = keys.map(function (k) {
       const S = SYMBOLS[k];
@@ -1468,7 +1720,7 @@ window.ZHUYIN_AUDIO_MAP = {
       btn.classList.add("correct");
       $("#quizFb").textContent = "答對了！阿豆真厲害！";
       $("#quizFb").className = "feedback ok";
-      showAdouPraise(true);
+      showPochitaPop(true);
       if (!quizAwarded) { quizAwarded = true; addStar(1); }
       ding(true);
       sparkleAt(btn);
@@ -1480,7 +1732,7 @@ window.ZHUYIN_AUDIO_MAP = {
               renderQuizRound(false);
             } else {
               $("#quizFb").textContent = "6 題都完成了！可以按下一步看筆順。";
-              showAdouPraise(true);
+              showPochitaPop(true);
               speak("都完成了，阿豆好棒！可以看筆順了。");
             }
           }, 500);
