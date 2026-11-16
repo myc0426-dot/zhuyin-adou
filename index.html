@@ -90,10 +90,10 @@ header.top {
 }
 .brand-mark {
   width: 42px; height: 42px; flex: 0 0 auto;
-  background: #58878d; border-radius: 50%;
+  background: transparent; border-radius: 50%;
   display: grid; place-items: center;
-  box-shadow: 0 2px 0 rgba(0,0,0,.15);
   overflow: hidden;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));
 }
 .brand-mark svg { width: 32px; height: 32px; }
 .brand-mark img {
@@ -217,13 +217,14 @@ footer.nav {
 .adou { width: 160px; height: 210px; position: relative; transform-origin: 50% 80%; }
 .adou svg { width: 100%; height: 100%; overflow: visible; }
 .adou-pic {
-  width: 168px; height: auto; aspect-ratio: 352 / 512;
+  width: auto; height: 230px; aspect-ratio: 221 / 512;
   transform-origin: 50% 100%;
 }
 .adou-pic img {
-  width: 100%; height: auto; display: block;
-  border-radius: 24px;
-  box-shadow: var(--shadow-s);
+  height: 100%; width: auto; display: block;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 8px rgba(36, 52, 60, 0.22));
 }
 .adou.idle { animation: bob 2.2s ease-in-out infinite; }
 .adou.wave { animation: adou-wave 0.6s ease-in-out infinite; }
@@ -272,28 +273,31 @@ footer.nav {
 /* ===== 瑪奇瑪 / 波奇塔 ===== */
 .makima-holder {
   position: relative;
-  width: 240px;
+  width: auto;
+  height: 250px;
+  aspect-ratio: 287 / 512;
   flex: 0 0 auto;
-  container-type: inline-size;
+  container-type: size;
 }
 .makima-holder img {
-  width: 100%; height: auto; display: block;
-  border-radius: 24px;
-  box-shadow: var(--shadow-s);
+  height: 100%; width: auto; display: block;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 8px rgba(36, 52, 60, 0.22));
 }
-.makima-holder.makima-sm { width: 168px; }
+.makima-holder.makima-sm { height: 170px; width: auto; }
 .makima-card-glyph {
   position: absolute;
-  left: 23%;
-  top: 42.5%;
-  width: 19%;
-  height: 13%;
+  left: 10%;
+  top: 42%;
+  width: 30%;
+  height: 11%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: "LessonTC", "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif;
   font-weight: 700;
-  font-size: 12cqw;
+  font-size: 16cqh;
   line-height: 1;
   color: var(--ink);
   pointer-events: none;
@@ -301,15 +305,18 @@ footer.nav {
   letter-spacing: 0;
 }
 .mascot-pic {
-  width: 168px;
+  width: auto;
+  height: 180px;
+  aspect-ratio: 444 / 512;
   position: relative;
   flex: 0 0 auto;
   transform-origin: 50% 80%;
 }
 .mascot-pic img {
-  width: 100%; height: auto; display: block;
-  border-radius: 24px;
-  box-shadow: var(--shadow-s);
+  height: 100%; width: auto; display: block;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 8px rgba(36, 52, 60, 0.22));
 }
 .mascot-pic.idle { animation: bob 2.2s ease-in-out infinite; }
 .mascot-pic.jump { animation: jump 0.7s ease-in-out 3; }
@@ -330,28 +337,31 @@ footer.nav {
   margin: 4px 0 8px;
 }
 .welcome-cast .adou-wrap { margin: 0; }
-.welcome-cast .adou-pic { width: 150px; }
-.welcome-cast .makima-holder.makima-sm { width: 150px; }
-.welcome-cast #pochitaWelcome { width: 132px; }
-.cast-break .adou-pic { width: 140px; }
-.cast-break #pochitaBreak { width: 150px; }
-.cast-end .adou-pic { width: 120px; }
-.cast-end #pochitaEnd { width: 132px; }
+.welcome-cast .adou-pic { width: auto; height: 200px; }
+.welcome-cast .makima-holder.makima-sm { width: auto; height: 200px; }
+.welcome-cast #pochitaWelcome { width: auto; height: 170px; }
+.cast-break .adou-pic { width: auto; height: 200px; }
+.cast-break #pochitaBreak { width: auto; height: 180px; }
+.cast-end .adou-pic { width: auto; height: 180px; }
+.cast-end #pochitaEnd { width: auto; height: 170px; }
 .cast-end { margin-top: 8px; }
 
 .pochita-pop {
   position: fixed;
   right: 18px;
   bottom: 96px;
-  width: 124px;
+  width: auto;
+  height: 130px;
+  aspect-ratio: 444 / 512;
   z-index: 35;
   pointer-events: none;
   transform-origin: 50% 80%;
 }
 .pochita-pop img {
-  width: 100%; height: auto; display: block;
-  border-radius: 22px;
-  box-shadow: var(--shadow);
+  height: 100%; width: auto; display: block;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 4px 10px rgba(36, 52, 60, 0.28));
 }
 .pochita-pop.show {
   animation: pochita-in 0.55s ease, pochita-wiggle 0.4s ease 0.55s 4;
@@ -398,11 +408,11 @@ footer.nav {
 #sc-learn-all .makima-holder { margin: 4px auto 10px; }
 
 @media (max-width: 640px) {
-  .makima-holder { width: 180px; }
-  .makima-holder.makima-sm { width: 132px; }
-  .welcome-cast .adou-pic, .welcome-cast .makima-holder.makima-sm { width: 110px; }
-  .welcome-cast #pochitaWelcome { width: 96px; }
-  .pochita-pop { width: 120px; right: 12px; bottom: 100px; }
+  .makima-holder { height: 200px; width: auto; }
+  .makima-holder.makima-sm { height: 140px; width: auto; }
+  .welcome-cast .adou-pic, .welcome-cast .makima-holder.makima-sm { height: 160px; width: auto; }
+  .welcome-cast #pochitaWelcome { height: 140px; width: auto; }
+  .pochita-pop { height: 110px; width: auto; right: 12px; bottom: 100px; }
 }
 
 /* ===== Cards / glyphs ===== */
@@ -426,7 +436,7 @@ footer.nav {
   flex-wrap: wrap;
   margin: 0 0 12px;
 }
-.learn-hero .makima-holder { width: 220px; }
+.learn-hero .makima-holder { width: auto; height: 250px; }
 .learn-hero .hero-glyph { margin: 0; }
 .hero-glyph {
   width: min(220px, 42vw); height: min(220px, 42vw);
@@ -505,9 +515,9 @@ footer.nav {
 }
 .playground .adou {
   position: absolute; bottom: 8px; left: 50%;
-  margin-left: -55px;
+  margin-left: -43px;
 }
-.playground .adou-pic { width: 110px; height: auto; }
+.playground .adou-pic { height: 200px; width: auto; }
 
 .timer-ring { width: 160px; height: 160px; position: relative; margin: 8px auto; }
 .timer-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
@@ -624,8 +634,8 @@ footer.nav {
 
 .sparks { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 
-#sc-end .adou { width: 128px; height: 168px; }
-#sc-end .adou-pic { width: 120px; height: auto; aspect-ratio: 352 / 512; }
+#sc-end .adou { width: auto; height: auto; }
+#sc-end .adou-pic { width: auto; height: 180px; }
 #sc-end .adou-wrap { margin-top: 8px; margin-bottom: 2px; }
 #sc-end .adou-pic.jump {
   animation: end-pop 0.7s ease 1, bob 2.2s ease-in-out 0.7s infinite;
@@ -635,7 +645,7 @@ footer.nav {
   55% { transform: translateY(-10px) scale(1.05); }
   100% { transform: translateY(0) scale(1); }
 }
-#sc-welcome .adou-pic { width: 180px; }
+#sc-welcome .adou-pic { width: auto; height: 200px; }
 #sc-end .welcome-hero, #sc-end .celebrate { padding-bottom: 8px; }
 #sc-end h2 { font-size: 34px; margin: 2px 0 4px; }
 #sc-end .lead { margin-bottom: 8px; }
@@ -671,16 +681,16 @@ footer.nav {
       <div class="welcome-hero">
         <div class="welcome-cast">
           <div class="makima-holder makima-sm" id="makimaWelcome">
-            <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+            <img src="images/makima.webp" alt="瑪奇瑪老師" width="287" height="512">
             <span class="makima-card-glyph" style="color:#E85D4C">ㄅ</span>
           </div>
           <div class="adou-wrap">
             <div class="adou adou-pic idle" id="adouWelcome">
-              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+              <img src="images/adou.webp" alt="阿豆" width="221" height="512">
             </div>
           </div>
           <div class="mascot-pic idle" id="pochitaWelcome">
-            <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
+            <img src="images/pochita.webp" alt="波奇塔" width="444" height="512">
           </div>
         </div>
         <h2>嗨，阿豆！準備好了嗎？</h2>
@@ -703,12 +713,12 @@ footer.nav {
         <div class="round-pills" id="listenPills"></div>
         <div class="cast-row">
           <div class="makima-holder" id="makimaListen">
-            <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+            <img src="images/makima.webp" alt="瑪奇瑪老師" width="287" height="512">
             <span class="makima-card-glyph"></span>
           </div>
           <div class="adou-wrap">
             <div class="adou adou-pic idle" id="adouListen">
-              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+              <img src="images/adou.webp" alt="阿豆" width="221" height="512">
             </div>
           </div>
         </div>
@@ -728,7 +738,7 @@ footer.nav {
         <div class="round-pills" id="woodPills"></div>
         <div class="playground" id="woodYard">
           <div class="adou adou-pic idle" id="adouWood">
-            <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+            <img src="images/adou.webp" alt="阿豆" width="221" height="512">
           </div>
         </div>
         <div class="cd-num hidden" id="woodCd"></div>
@@ -748,7 +758,7 @@ footer.nav {
       <h2>一起點一點、念一念</h2>
       <p class="lead">阿豆，三個符號都在這裡。點點看，瑪奇瑪老師會把符號舉起來。</p>
       <div class="makima-holder" id="makimaAll">
-        <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+        <img src="images/makima.webp" alt="瑪奇瑪老師" width="287" height="512">
         <span class="makima-card-glyph"></span>
       </div>
       <div class="sym-grid" id="allSyms"></div>
@@ -762,11 +772,11 @@ footer.nav {
         <div class="cast-row cast-break">
           <div class="adou-wrap">
             <div class="adou adou-pic idle" id="adouBreak">
-              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+              <img src="images/adou.webp" alt="阿豆" width="221" height="512">
             </div>
           </div>
           <div class="mascot-pic idle" id="pochitaBreak">
-            <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
+            <img src="images/pochita.webp" alt="波奇塔" width="444" height="512">
           </div>
         </div>
         <div class="timer-ring" id="breakRing">
@@ -791,7 +801,7 @@ footer.nav {
       <p class="lead">仔細聽，再點出正確的注音。共 6 題。點錯了沒關係，再聽一次。</p>
       <div class="quiz-prompt-row">
         <div class="makima-holder makima-sm" id="makimaQuiz">
-          <img src="images/makima.webp" alt="瑪奇瑪老師" width="512" height="512">
+          <img src="images/makima.webp" alt="瑪奇瑪老師" width="287" height="512">
           <span class="makima-card-glyph"></span>
         </div>
         <div class="status" id="quizPrompt">第 1 題／6 題</div>
@@ -831,11 +841,11 @@ footer.nav {
         <div class="cast-row cast-end">
           <div class="adou-wrap">
             <div class="adou adou-pic idle jump" id="adouEnd">
-              <img src="images/adou.webp" alt="阿豆" width="352" height="512">
+              <img src="images/adou.webp" alt="阿豆" width="221" height="512">
             </div>
           </div>
           <div class="mascot-pic idle jump" id="pochitaEnd">
-            <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
+            <img src="images/pochita.webp" alt="波奇塔" width="444" height="512">
             <div class="pochita-bubble">嚕嚕嚕！</div>
           </div>
         </div>
@@ -860,7 +870,7 @@ footer.nav {
   </footer>
 </div>
 <div class="pochita-pop hidden" id="pochitaPop" aria-hidden="true">
-  <img src="images/pochita.webp" alt="波奇塔" width="512" height="512">
+  <img src="images/pochita.webp" alt="波奇塔" width="444" height="512">
   <div class="pochita-bubble">嚕嚕嚕！</div>
 </div>
 <canvas id="confetti"></canvas>
@@ -1394,7 +1404,7 @@ window.ZHUYIN_AUDIO_MAP = {
   function makimaHTML(id, ch, color) {
     const style = color ? " style=\"color:" + color + "\"" : "";
     return "<div class=\"makima-holder\" id=\"" + id + "\">" +
-      "<img src=\"images/makima.webp\" alt=\"瑪奇瑪老師\" width=\"512\" height=\"512\">" +
+      "<img src=\"images/makima.webp\" alt=\"瑪奇瑪老師\" width=\"287\" height=\"512\">" +
       "<span class=\"makima-card-glyph\"" + style + ">" + (ch || "") + "</span></div>";
   }
 
